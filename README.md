@@ -49,4 +49,4 @@ Para mantener el sitio liviano y fácil de mantener, se ha utilizado **Vanilla W
 
 ---
 
-_Hecho con ❤️ para los amantes de las mascotas._
+_Hecho con 🩵 para quienes aman a sus peluditos._
