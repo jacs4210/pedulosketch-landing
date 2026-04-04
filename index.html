@@ -19,12 +19,14 @@
 <body>
 
     <!-- Header / Navbar -->
-    <header class="container" style="padding: 2rem 0; display: flex; justify-content: space-between; align-items: center;">
-        <img src="assets/brand/logo.webp" alt="PeludoSketch Logo" style="height: 60px;">
-        <nav>
-            <a href="#galeria" style="margin: 0 1rem; text-decoration: none; color: var(--color-dark); font-weight: 600;">Galería</a>
-            <a href="#precios" style="margin: 0 1rem; text-decoration: none; color: var(--color-dark); font-weight: 600;">Precios</a>
-            <a href="https://www.instagram.com/peludosketch/" target="_blank" class="btn btn-primary">Pedir Ahora</a>
+    <header class="container main-header">
+        <a href="#" class="logo-link">
+            <img src="assets/brand/logo.webp" alt="PeludoSketch Logo" class="brand-logo">
+        </a>
+        <nav class="main-nav">
+            <a href="#galeria" class="nav-link">Galería</a>
+            <a href="#precios" class="nav-link">Precios</a>
+            <a href="https://www.instagram.com/peludosketch/" target="_blank" class="btn btn-primary nav-btn">Pedir Ahora</a>
         </nav>
     </header>
 
@@ -40,7 +42,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="assets/gallery/Lila_Kiko.webp" alt="Ilustración principal de PeludoSketch">
+                <img src="assets/gallery/cats/Lila_Kiko.webp" alt="Ilustración principal de PeludoSketch">
             </div>
         </div>
     </section>
@@ -48,24 +50,33 @@
     <!-- Gallery Section -->
     <section id="galeria" class="container">
         <h2>Peluditos ilustrados</h2>
-        <div class="gallery-container">
-            <div class="gallery-item"><img src="assets/gallery/Lila_Kiko.webp" alt="Lila y Kiko"><div class="gallery-overlay">Lila y Kiko</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Burbuja.webp" alt="Burbuja"><div class="gallery-overlay">Burbuja</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Falcao.webp" alt="Falcao"><div class="gallery-overlay">Falcao</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Frida_Kaisser.webp" alt="Frida Kaisser"><div class="gallery-overlay">Frida Kaisser</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Jack.webp" alt="Jack"><div class="gallery-overlay">Jack</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Junior.webp" alt="Junior"><div class="gallery-overlay">Junior</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Loki.webp" alt="Loki"><div class="gallery-overlay">Loki</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Mani.webp" alt="Mani"><div class="gallery-overlay">Mani</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Milo.webp" alt="Milo"><div class="gallery-overlay">Milo</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Narbú.webp" alt="Narbú"><div class="gallery-overlay">Narbú</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Oliva.webp" alt="Oliva"><div class="gallery-overlay">Oliva</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Pepa.webp" alt="Pepa"><div class="gallery-overlay">Pepa</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Rex.webp" alt="Rex"><div class="gallery-overlay">Rex</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Simba.webp" alt="Simba"><div class="gallery-overlay">Simba</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Suga.webp" alt="Suga"><div class="gallery-overlay">Suga</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Thoridio.webp" alt="Thoridio"><div class="gallery-overlay">Thoridio</div></div>
-            <div class="gallery-item"><img src="assets/gallery/Toby.webp" alt="Toby"><div class="gallery-overlay">Toby</div></div>
+        <p class="section-subtitle">Selecciona una categoría para ver el portafolio completo:</p>
+        <div class="category-grid">
+            <div class="category-card" data-category="cats">
+                <img src="assets/gallery/cats/Lila_Kiko.webp" alt="Gatitos" class="category-img">
+                <div class="category-overlay">
+                    <h3>Gatitos</h3>
+                    <span>Ver portafolio</span>
+                </div>
+            </div>
+            <div class="category-card" data-category="dogs">
+                <img src="assets/gallery/dogs/Jack.webp" alt="Perritos" class="category-img">
+                <div class="category-overlay">
+                    <h3>Perritos</h3>
+                    <span>Ver portafolio</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Modal Structure -->
+        <div id="dynamic-modal" class="modal-container">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <h3 id="modal-title">Portafolio</h3>
+                <div id="modal-gallery" class="gallery-container">
+                    <!-- Images will be injected here dynamically via JS -->
+                </div>
+            </div>
         </div>
     </section>
 
@@ -87,7 +98,7 @@
             
             <div class="pricing-card" style="border-top: 8px solid var(--color-pink); background: var(--color-bg);">
                 <h3>Impresiones con Marco</h3>
-                <div style="font-size: 1.2rem; margin-bottom: 2rem;">Adicional a la ilustración</div>
+                <div style="font-size: 1.2rem; margin-bottom: 2rem;">Adicional al valor de la ilustración</div>
                 <ul style="list-style: none; text-align: left; margin-bottom: 2rem;">
                     <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Pequeña (15x20cm)</span> <strong>$30.000</strong></li>
                     <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Mediana (20x30cm)</span> <strong>$45.000</strong></li>
