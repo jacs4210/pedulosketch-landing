@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
     const modalGallery = document.getElementById('modal-gallery');
 
-    function openModal(category) {
+    function openModal() {
         // Set Title
-        modalTitle.textContent = category === 'cats' ? 'Gatitos Ilustrados' : 'Perritos Ilustrados';
+        modalTitle.textContent = 'Todos nuestros peluditos';
         
-        // Populate Gallery
+        // Populate Gallery (Merge cats and dogs)
         modalGallery.innerHTML = ''; // clear previous
-        const items = galleryData[category];
+        const items = [...galleryData.cats, ...galleryData.dogs];
         
         items.forEach(item => {
             const div = document.createElement('div');
@@ -78,10 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     categoryCards.forEach(card => {
         card.addEventListener('click', () => {
-            const cat = card.getAttribute('data-category');
-            openModal(cat);
+            openModal();
         });
     });
+    
+    const viewAllBtn = document.getElementById('view-all-btn');
+    if (viewAllBtn) {
+        viewAllBtn.addEventListener('click', () => {
+            openModal();
+        });
+    }
 
     modalClose.addEventListener('click', closeModal);
 
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Scroll Reveal Animation for Pricing Cards
+    // 3. Scroll Reveal Animation
     const observerOptions = {
         threshold: 0.1
     };
@@ -106,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const cards = document.querySelectorAll('.pricing-card');
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease-out';
-        observer.observe(card);
+    const animatedElements = document.querySelectorAll('.pricing-card, .about-content, .feature-box');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        observer.observe(el);
     });
 
 });

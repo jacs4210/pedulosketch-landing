@@ -25,8 +25,10 @@
         </a>
         <nav class="main-nav">
             <a href="#galeria" class="nav-link">Galería</a>
+            <a href="#como-funciona" class="nav-link">Proceso</a>
+            <a href="#sobre-mi" class="nav-link">Sobre mí</a>
             <a href="#precios" class="nav-link">Precios</a>
-            <a href="https://www.instagram.com/peludosketch/" target="_blank" class="btn btn-primary nav-btn">Pedir Ahora</a>
+            <a href="https://ig.me/m/peludosketch" target="_blank" class="btn btn-primary nav-btn">Pedir Ahora</a>
         </nav>
     </header>
 
@@ -37,7 +39,7 @@
                 <h1>Inmortaliza a tu mejor amigo</h1>
                 <p>Ilustro a tu peludito capturando eso que lo hace único. Un recuerdo especial, hecho a mano por Aleja C.</p>
                 <div style="display: flex; gap: 1rem;">
-                    <a href="https://www.instagram.com/peludosketch/" class="btn btn-primary">¡Pide el tuyo por DM!</a>
+                    <a href="https://ig.me/m/peludosketch" target="_blank" class="btn btn-primary">¡Pide el tuyo por DM!</a>
                     <a href="#galeria" class="btn" style="background: white; border: 2px solid var(--color-dark);">Ver portafolio</a>
                 </div>
             </div>
@@ -50,10 +52,10 @@
     <!-- Gallery Section -->
     <section id="galeria" class="container">
         <h2>Peluditos ilustrados</h2>
-        <p class="section-subtitle">Selecciona una categoría para ver el portafolio completo:</p>
+        <p class="section-subtitle">Conoce cómo ilustramos en cada una de nuestras entregas:</p>
         <div class="category-grid">
             <div class="category-card" data-category="cats">
-                <img src="assets/gallery/cats/Lila_Kiko.webp" alt="Gatitos" class="category-img">
+                <img src="assets/gallery/cats/Loki.webp" alt="Gatitos" class="category-img">
                 <div class="category-overlay">
                     <h3>Gatitos</h3>
                     <span>Ver portafolio</span>
@@ -66,6 +68,10 @@
                     <span>Ver portafolio</span>
                 </div>
             </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <button id="view-all-btn" class="btn btn-primary" style="background: white; color: var(--color-dark); border: 2px solid var(--color-dark);">Ver todos nuestros peluditos</button>
         </div>
 
         <!-- Dynamic Modal Structure -->
@@ -80,6 +86,32 @@
         </div>
     </section>
 
+    <!-- How it works Section -->
+    <section id="como-funciona" class="container steps-section">
+        <h2>¿Cómo funciona?</h2>
+        <div class="steps-layout">
+            <div class="steps-grid--vertical">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Me envías la foto de tu peludito</h3>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Trabajo la ilustración con detalle y dedicación</h3>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Recibes tu retrato listo para acompañarte</h3>
+                </div>
+            </div>
+            <div class="steps-media">
+                <video autoplay loop muted playsinline class="steps-video">
+                    <source src="assets/brand/peludosketch.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
     <section id="precios" class="container">
         <h2>Planes y Precios</h2>
@@ -87,13 +119,14 @@
             <div class="pricing-card" style="border-top: 8px solid var(--color-sky);">
                 <h3>Ilustración Digital</h3>
                 <div class="price">$100.000 <small>COP</small></div>
-                <ul style="list-style: none; padding-bottom: 2rem; color: #666;">
+                <ul style="list-style: none; margin-bottom: 1rem; color: #666;">
                     <li>✓ 1 Peludito</li>
                     <li>✓ Fondo liso o minimalista</li>
                     <li>✓ Archivo en alta resolución</li>
                     <li>✓ 1 ronda de ajustes</li>
                 </ul>
-                <a href="https://www.instagram.com/peludosketch/" class="btn btn-primary">Elegir digital</a>
+                <p style="font-size: 0.9rem; margin-bottom: 2rem; opacity: 0.8;">Peludito adicional: +$90.000</p>
+                <a href="https://ig.me/m/peludosketch" target="_blank" class="btn btn-primary">Elegir digital</a>
             </div>
             
             <div class="pricing-card" style="border-top: 8px solid var(--color-pink); background: var(--color-bg);">
@@ -104,8 +137,21 @@
                     <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Mediana (20x30cm)</span> <strong>$45.000</strong></li>
                     <li style="margin-bottom: 1rem; display: flex; justify-content: space-between;"><span>Grande (30x40cm)</span> <strong>$60.000</strong></li>
                 </ul>
-                <p style="font-size: 0.9rem; margin-bottom: 2rem; opacity: 0.8;">Peludito adicional: +$90.000</p>
-                <a href="https://www.instagram.com/peludosketch/" class="btn btn-primary">Elegir físico</a>
+                <a href="https://ig.me/m/peludosketch" target="_blank" class="btn btn-primary">Elegir físico</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="sobre-mi" class="about-section container">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="assets/brand/about_me.webp" alt="Aleja, creadora de PeludoSketch">
+            </div>
+            <div class="about-text">
+                <h2>Hola, soy Aleja</h2>
+                <p>Soy la ilustradora detrás de peludosketch.</p>
+                <p>Me gusta transformar peluditos en retratos que realmente los representen, cuidando cada detalle para que se sientan vivos en la ilustración.</p>
             </div>
         </div>
     </section>
@@ -116,8 +162,14 @@
             <div class="feature-text">
                 <h2>Detalles que Enamoran</h2>
                 <p>Cada peludosketch es una pieza de autor. En el reverso encontrarás mi etiqueta y firma, certificando que es una ilustración original hecha con dedicación.</p>
-                <br>
-                <a href="https://www.instagram.com/peludosketch/" target="_blank" class="btn btn-primary">Ver video en Instagram</a>
+                <a href="https://www.instagram.com/peludosketch/" target="_blank" class="btn btn-primary btn-icon" style="margin-top: 1.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    Ver video en Instagram
+                </a>
             </div>
             <div class="feature-image">
                 <img src="assets/brand/etiqueta.webp" alt="Etiqueta de autor PeludoSketch">
@@ -128,11 +180,18 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p style="margin-bottom: 1rem;">Hecho con 🩵 para quienes aman a sus peluditos</p>
+            <p style="margin-bottom: 1rem; font-size: 1.1rem;">Hecho con 🩵 para quienes aman a sus peluditos</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/peludosketch/" target="_blank">Instagram</a>
+                <a href="https://www.instagram.com/peludosketch/" target="_blank" class="social-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>@peludosketch</span>
+                </a>
             </div>
-            <p style="font-size: 0.8rem; margin-top: 2rem; opacity: 0.5;">&copy; 2026 PeludoSketch. Todos los derechos reservados.</p>
+            <p style="font-size: 0.9rem; margin-top: 3rem; opacity: 0.5;">&copy; 2026 PeludoSketch. Todos los derechos reservados.</p>
         </div>
     </footer>
 
