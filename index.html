@@ -53,25 +53,18 @@
     <section id="galeria" class="container">
         <h2>Peluditos ilustrados</h2>
         <p class="section-subtitle">Conoce cómo ilustramos en cada una de nuestras entregas:</p>
-        <div class="category-grid">
-            <div class="category-card" data-category="cats">
-                <img src="assets/gallery/cats/Loki.webp" alt="Gatitos" class="category-img">
-                <div class="category-overlay">
-                    <h3>Gatitos</h3>
-                    <span>Ver portafolio</span>
-                </div>
-            </div>
-            <div class="category-card" data-category="dogs">
-                <img src="assets/gallery/dogs/Jack.webp" alt="Perritos" class="category-img">
-                <div class="category-overlay">
-                    <h3>Perritos</h3>
-                    <span>Ver portafolio</span>
-                </div>
+        <div class="illustration-fan-container">
+            <div class="illustration-fan">
+                <div class="fan-item" style="--i: -2;"><img src="assets/gallery/cats/Simba.webp" alt="Simba"></div>
+                <div class="fan-item" style="--i: -1;"><img src="assets/gallery/dogs/Burbuja.webp" alt="Burbuja"></div>
+                <div class="fan-item" style="--i: 0; z-index: 10;"><img src="assets/gallery/dogs/Jack.webp" alt="Jack"></div>
+                <div class="fan-item" style="--i: 1;"><img src="assets/gallery/cats/Loki.webp" alt="Loki"></div>
+                <div class="fan-item" style="--i: 2;"><img src="assets/gallery/dogs/Falcao.webp" alt="Falcao"></div>
             </div>
         </div>
         
-        <div style="text-align: center; margin-top: 3rem;">
-            <button id="view-all-btn" class="btn btn-primary" style="background: white; color: var(--color-dark); border: 2px solid var(--color-dark);">Ver todos nuestros peluditos</button>
+        <div style="text-align: center; margin-top: 5rem;">
+            <button id="view-all-btn" class="btn btn-featured">Ver todos nuestros peluditos</button>
         </div>
 
         <!-- Dynamic Modal Structure -->
@@ -194,6 +187,18 @@
             <p style="font-size: 0.9rem; margin-top: 3rem; opacity: 0.5;">&copy; 2026 PeludoSketch. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Lightbox/Zoom -->
+    <div id="lightbox" class="lightbox-overlay">
+        <img src="" alt="Zoom" class="lightbox-img">
+    </div>
+
+    <!-- Botón Volver Arriba -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </a>
 
     <script src="js/scripts.js"></script>
 </body>

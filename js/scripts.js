@@ -39,11 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    const categoryCards = document.querySelectorAll('.category-card');
+    const illustrationFan = document.querySelector('.illustration-fan');
     const dynamicModal = document.getElementById('dynamic-modal');
     const modalClose = document.querySelector('.modal-close');
     const modalTitle = document.getElementById('modal-title');
     const modalGallery = document.getElementById('modal-gallery');
+    
+    // Lightbox Elements
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
 
     function openModal() {
         // Set Title
@@ -57,6 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.className = 'gallery-item';
             div.innerHTML = `<img src="${item.src}" alt="${item.name}">`;
+            
+            // Add click for Zoom
+            div.addEventListener('click', () => openZoom(item.src));
+            
             modalGallery.appendChild(div);
         });
 
@@ -76,11 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    categoryCards.forEach(card => {
-        card.addEventListener('click', () => {
-            openModal();
-        });
-    });
+    function openZoom(src) {
+        lightboxImg.src = src;
+        lightbox.style.display = 'flex';
+        setTimeout(() => {
+            lightbox.style.opacity = '1';
+            lightbox.classList.add('lightbox-active');
+        }, 10);
+    }
+
+    function closeZoom() {
+        lightbox.classList.remove('lightbox-active');
+        lightbox.style.opacity = '0';
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+        }, 300);
+    }
+
+    if (illustrationFan) {
+        illustrationFan.addEventListener('click', openModal);
+    }
     
     const viewAllBtn = document.getElementById('view-all-btn');
     if (viewAllBtn) {
@@ -98,6 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Lightbox close
+    lightbox.addEventListener('click', closeZoom);
+
     // 3. Scroll Reveal Animation
     const observerOptions = {
         threshold: 0.1
@@ -109,7 +135,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
             }
+            // 4. Scroll Effects (Header & Back to Top)
+    const mainHeader = document.querySelector('.main-header');
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Header effect
+        if (scrollY > 50) {
+            mainHeader.classList.add('header-scrolled');
+        } else {
+            mainHeader.classList.remove('header-scrolled');
+        }
+
+        // Back to Top visibility
+        if (scrollY > 500) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
+    });
+
+});
     }, observerOptions);
 
     const animatedElements = document.querySelectorAll('.pricing-card, .about-content, .feature-box');
