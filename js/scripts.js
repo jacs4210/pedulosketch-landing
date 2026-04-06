@@ -124,18 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lightbox close
     lightbox.addEventListener('click', closeZoom);
 
-    // 3. Scroll Reveal Animation
-    const observerOptions = {
-        threshold: 0.1
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-            // 4. Scroll Effects (Header & Back to Top)
+    // 4. Scroll Effects (Header & Back to Top)
     const mainHeader = document.querySelector('.main-header');
     const backToTop = document.getElementById('back-to-top');
 
@@ -165,7 +155,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-});
+    // 5. Mobile Menu Toggle
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-btn');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mainNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close menu when clicking outside (on the body/overlay)
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && mainNav.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // 3. Scroll Reveal Animation (Moved back to top part or initialized correctly)
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
     }, observerOptions);
 
     const animatedElements = document.querySelectorAll('.pricing-card, .about-content, .feature-box');
