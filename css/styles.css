@@ -261,13 +261,20 @@ h2 {
 }
 
 .gallery-item:hover {
-    transform: scale(1.02);
+    /* No transform on the container — Safari compositor bug with overflow:hidden  */
+    /* + border-radius + transform inside CSS columns. Only deepening the shadow.  */
     box-shadow: var(--shadow-hover);
 }
 
 .gallery-item img {
     width: 100%;
     display: block;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+    /* Animate the img child instead: no overflow:hidden on img, no Safari bug */
+    transform: scale(1.04);
 }
 
 /* Lightbox / Zoom Overlay */
