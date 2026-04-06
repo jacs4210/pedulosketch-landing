@@ -135,21 +135,7 @@ h2 {
     box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
 }
 
-.btn-featured {
-    padding: 1.2rem 3.5rem;
-    font-size: 1.3rem;
-    background: linear-gradient(135deg, var(--color-accent) 0%, #a29bfe 100%);
-    color: white;
-    border: none;
-    box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
-    transition: var(--transition);
-}
 
-.btn-featured:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(108, 92, 231, 0.5);
-    background: linear-gradient(135deg, #8175f0 0%, var(--color-accent) 100%);
-}
 
 /* Category Section */
 .section-subtitle {
