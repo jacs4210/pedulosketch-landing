@@ -206,11 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.pricing-card, .about-content, .feature-box');
-    animatedElements.forEach(el => {
+    const animatedElements = document.querySelectorAll('.step-card, .steps-media, .pricing-card, .about-content, .feature-box');
+    animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
         observer.observe(el);
     });
 
