@@ -2,6 +2,8 @@
 
 ¡Bienvenido a PeludoSketch! Este es el repositorio principal de la *Landing Page* oficial de la marca: un sitio web portafolio, limpio, y con una estética en colores pastel diseñado para convertir visitantes en clientes al mostrar amor, calidad artística y transparencia en el proceso creativo.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2dbedee0-379a-462d-9a27-bc7ce85383b9/deploy-status)](https://app.netlify.com/projects/peludosketch/deploys)
+
 ## 🐶 Acerca del Proyecto
 PeludoSketch transforma a los "peluditos" de compañía en recuerdos especiales ilustrados a mano. Esta página web está enfocada en mostrar un escaparate nativo que consolida la biografía de Aleja (la autora), un amplio portafolio, una tabla de tarifas, e interacciones premium de interfaz diseñadas en un embudo de conversión para llevarte a apartar comisiones a través de los mensajes privados de Instagram.
 
