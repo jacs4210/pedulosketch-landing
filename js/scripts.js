@@ -206,12 +206,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.step-card, .steps-media, .pricing-card, .about-content, .feature-box');
+    const animatedElements = document.querySelectorAll('.step-card, .steps-media, .pricing-card--single, .about-content, .feature-box');
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
         observer.observe(el);
     });
+
+    // 6. Pricing Interaction Logic
+    const addonContainer = document.querySelector('.addon-container');
+    const addonToggle = document.querySelector('.addon-toggle');
+    const addonOptions = document.querySelectorAll('.addon-option input');
+    const pricingCta = document.getElementById('pricing-cta');
+
+    if (addonToggle && addonContainer) {
+        addonToggle.addEventListener('click', () => {
+            const isActive = addonContainer.classList.toggle('active');
+            addonToggle.setAttribute('aria-expanded', isActive);
+            
+            // If collapsed, uncheck all options
+            if (!isActive) {
+                addonOptions.forEach(opt => {
+                    opt.checked = false;
+                    opt.parentElement.classList.remove('selected');
+                });
+                updateCta();
+            }
+        });
+    }
+
+    if (addonOptions.length > 0) {
+        addonOptions.forEach(opt => {
+            opt.addEventListener('change', () => {
+                // Remove selected class from all
+                document.querySelectorAll('.addon-option').forEach(el => el.classList.remove('selected'));
+                
+                // Add to current if checked
+                if (opt.checked) {
+                    opt.parentElement.classList.add('selected');
+                }
+                updateCta();
+            });
+        });
+    }
+
+    function updateCta() {
+        const selectedOption = document.querySelector('.addon-option input:checked');
+        const baseUrl = "https://ig.me/m/peludosketch";
+        let message = "¡Hola Aleja! 🐾 Me interesa una Ilustración Digital ($100.000 COP).";
+        let buttonText = "Solicitar mi ilustración →";
+
+        if (selectedOption) {
+            const size = selectedOption.value;
+            const extraPrice = selectedOption.dataset.price;
+            message = `¡Hola Aleja! 🐾 Me gustaría pedir una Ilustración Digital ($100.000 COP) + Impresión con Marco ${size} (+$${extraPrice} COP). ¿Me cuentas los siguientes pasos?`;
+            buttonText = `Solicitar con impresión ${size} →`;
+        } else {
+            message += " ¿Me cuentas los siguientes pasos?";
+        }
+
+        // Update Button
+        pricingCta.textContent = buttonText;
+        pricingCta.href = `${baseUrl}?text=${encodeURIComponent(message)}`;
+    }
+
+    // Initial CTA update
+    if (pricingCta) updateCta();
 
 });

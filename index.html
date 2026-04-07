@@ -143,33 +143,60 @@
     <!-- Pricing Section -->
     <section id="precios" class="container">
         <h2>Planes y Precios</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card" style="border-top: 8px solid var(--color-sky);">
-                <h3>Ilustración Digital</h3>
+        <div class="pricing-card--single">
+            <div class="pricing-header">
+                <div>
+                    <h3>Ilustración Digital</h3>
+                    <p class="pricing-subtitle">Recuerdo eterno hecho a mano</p>
+                </div>
                 <div class="price">$100.000 <small>COP</small></div>
-                <ul style="list-style: none; margin-bottom: 1rem; color: #666;">
-                    <li>✓ 1 Peludito</li>
-                    <li>✓ Fondo liso o minimalista</li>
-                    <li>✓ Archivo en alta resolución</li>
-                    <li>✓ 1 ronda de ajustes</li>
-                </ul>
-                <p style="font-size: 0.9rem; margin-bottom: 2rem; opacity: 0.8;">Peludito adicional: +$90.000 <small>COP</small></p>
-                <a href="https://ig.me/m/peludosketch" target="_blank" class="btn btn-primary">Elegir digital</a>
             </div>
 
-            <div class="pricing-card" style="border-top: 8px solid var(--color-pink); background: var(--color-bg);">
-                <h3>Impresiones con Marco</h3>
-                <div style="font-size: 1.2rem; margin-bottom: 2rem;">Adicional al valor de la ilustración</div>
-                <ul style="list-style: none; text-align: left; margin-bottom: 2rem;">
-                    <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Pequeña
-                            (15x20cm)</span> <strong>$30.000 <small>COP</small></strong></li>
-                    <li style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;"><span>Mediana
-                            (20x30cm)</span> <strong>$45.000 <small>COP</small></strong></li>
-                    <li style="margin-bottom: 1rem; display: flex; justify-content: space-between;"><span>Grande
-                            (30x40cm)</span> <strong>$60.000 <small>COP</small></strong></li>
-                </ul>
-                <a href="https://ig.me/m/peludosketch" target="_blank" class="btn btn-primary">Elegir físico</a>
+            <ul class="pricing-features">
+                <li><span>✓</span> 1 Peludito ilustrado</li>
+                <li><span>✓</span> Fondo liso o minimalista</li>
+                <li><span>✓</span> Archivo digital en alta resolución</li>
+                <li><span>✓</span> 1 ronda de ajustes personalizados</li>
+            </ul>
+
+            <div class="pricing-extra-info">
+                Peludito adicional: <span class="no-wrap">+$90.000 <small>COP</small></span>
             </div>
+
+            <!-- Add-on Section -->
+            <div class="addon-container">
+                <button class="addon-toggle" aria-expanded="false">
+                    <span class="toggle-text">🖼 ¿Quieres llevarlo a tu pared?</span>
+                    <span class="toggle-icon">+</span>
+                </button>
+                <div class="addon-content">
+                    <p class="addon-description">Añade una impresión física con marco y envío incluido a toda Colombia:</p>
+                    <div class="addon-options">
+                        <label class="addon-option">
+                            <input type="radio" name="print-size" value="Pequeña" data-price="30.000">
+                            <span class="option-check"></span>
+                            <span class="option-label">Pequeña <small>(15x20cm)</small></span>
+                            <span class="option-price no-wrap">+$30.000 <small>COP</small></span>
+                        </label>
+                        <label class="addon-option">
+                            <input type="radio" name="print-size" value="Mediana" data-price="45.000">
+                            <span class="option-check"></span>
+                            <span class="option-label">Mediana <small>(20x30cm)</small></span>
+                            <span class="option-price no-wrap">+$45.000 <small>COP</small></span>
+                        </label>
+                        <label class="addon-option">
+                            <input type="radio" name="print-size" value="Grande" data-price="60.000">
+                            <span class="option-check"></span>
+                            <span class="option-label">Grande <small>(30x40cm)</small></span>
+                            <span class="option-price no-wrap">+$60.000 <small>COP</small></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://ig.me/m/peludosketch" target="_blank" class="btn btn-primary pricing-cta" id="pricing-cta">
+                Solicitar mi ilustración →
+            </a>
         </div>
     </section>
 
