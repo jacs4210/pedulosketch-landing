@@ -253,9 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCta() {
         const selectedOption = document.querySelector('.addon-option input:checked');
-        const baseUrl = "https://ig.me/m/peludosketch";
-        let message = "¡Hola Aleja! 🐾 Me interesa una Ilustración Digital ($100.000 COP).";
-        let buttonText = "Solicitar mi ilustración →";
+        const baseUrl = 'https://ig.me/m/peludosketch';
+        let message = '¡Hola Aleja! 🐾 Me interesa una Ilustración Digital ($100.000 COP).';
+        let buttonText = 'Solicitar mi ilustración →';
 
         if (selectedOption) {
             const size = selectedOption.value;
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
             message = `¡Hola Aleja! 🐾 Me gustaría pedir una Ilustración Digital ($100.000 COP) + Impresión con Marco ${size} (+$${extraPrice} COP). ¿Me cuentas los siguientes pasos?`;
             buttonText = `Solicitar con impresión ${size} →`;
         } else {
-            message += " ¿Me cuentas los siguientes pasos?";
+            message += ' ¿Me cuentas los siguientes pasos?';
         }
 
         // Update Button

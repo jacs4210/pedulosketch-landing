@@ -7,15 +7,12 @@
     --color-green: #c5e1cd;
     --color-yellow: #f1f0b0;
     --color-sky: #a3c1da;
-    
     --color-dark: #2d3436;
-    --color-light: #ffffff;
+    --color-light: #fff;
     --color-accent: #6c5ce7; /* Un violeta suave para acentos */
     --color-bg: #fafafa;
-    
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 15px 45px rgba(0, 0, 0, 0.1);
-    
+    --shadow-soft: 0 10px 30px rgb(0 0 0 / 5%);
+    --shadow-hover: 0 15px 45px rgb(0 0 0 / 10%);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -26,7 +23,7 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: Outfit, sans-serif;
     background-color: var(--color-bg);
     color: var(--color-dark);
     line-height: 1.6;
@@ -94,9 +91,9 @@ h2 {
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
+    0% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+    100% { transform: translateY(0); }
 }
 
 /* Buttons */
@@ -132,7 +129,7 @@ h2 {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
     border-color: transparent !important;
     color: white !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 30%) !important;
 }
 
 
@@ -203,7 +200,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(250, 250, 250, 0.98); /* Light premium background */
+    background: rgb(250 250 250 / 98%); /* Light premium background */
     z-index: 2000;
     display: none; /* Controlled by JS */
     opacity: 0;
@@ -268,6 +265,7 @@ h2 {
 
 .gallery-item:hover {
     /* No transform on the container — Safari compositor bug with overflow:hidden  */
+
     /* + border-radius + transform inside CSS columns. Only deepening the shadow.  */
     box-shadow: var(--shadow-hover);
 }
@@ -278,16 +276,13 @@ h2 {
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-item:hover img {
-    /* Animate the img child instead: no overflow:hidden on img, no Safari bug */
-    transform: scale(1.04);
-}
+
 
 /* Lightbox / Zoom Overlay */
 .lightbox-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgb(0 0 0 / 90%);
     z-index: 3000;
     display: none;
     justify-content: center;
@@ -301,7 +296,7 @@ h2 {
     max-width: 90%;
     max-height: 90vh;
     border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    box-shadow: 0 0 50px rgb(0 0 0 / 50%);
     transform: scale(0.9);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -406,7 +401,7 @@ h2 {
     object-fit: cover;
 }
 
-@media (max-width: 992px) {
+@media (width <= 992px) {
     .steps-layout {
         flex-direction: column;
         text-align: center;
@@ -533,7 +528,7 @@ h2 {
 }
 
 .addon-toggle:hover {
-    background: rgba(249, 216, 229, 0.2); /* color-pink alpha */
+    background: rgb(249 216 229 / 20%); /* color-pink alpha */
 }
 
 .toggle-icon {
@@ -559,7 +554,7 @@ h2 {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-    background: rgba(249, 216, 229, 0.1);
+    background: rgb(249 216 229 / 10%);
 }
 
 .addon-container.active .addon-content {
@@ -644,7 +639,7 @@ h2 {
 
 .addon-option.selected {
     border-color: var(--color-sky);
-    background: rgba(163, 193, 218, 0.05);
+    background: rgb(163 193 218 / 5%);
 }
 
 /* Pricing CTA */
@@ -656,7 +651,7 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .pricing-card--single {
         padding: 2rem 1.5rem;
     }
@@ -725,10 +720,7 @@ h2 {
     transition: var(--transition);
 }
 
-.about-image img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
+
 
 .about-text {
     flex: 1;
@@ -763,6 +755,16 @@ h2 {
     box-shadow: var(--shadow-soft);
 }
 
+.about-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 15%);
+}
+
+.gallery-item:hover img {
+    /* Animate the img child instead: no overflow:hidden on img, no Safari bug */
+    transform: scale(1.04);
+}
+
 /* Footer */
 footer {
     padding: 4rem 0 3rem;
@@ -780,7 +782,7 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    background: rgba(255,255,255,0.05);
+    background: rgb(255 255 255 / 5%);
     color: var(--color-light);
     text-decoration: none;
     padding: 0.8rem 1.8rem;
@@ -788,14 +790,14 @@ footer {
     font-size: 1.2rem;
     font-weight: 600;
     transition: var(--transition);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgb(255 255 255 / 10%);
 }
 
 .social-pill:hover {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     border-color: transparent;
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 30%);
     color: white;
 }
 
@@ -812,7 +814,7 @@ footer {
 }
 
 .header-container {
-    padding: 2rem 2rem;
+    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -820,23 +822,13 @@ footer {
 }
 
 .main-header.header-scrolled {
-    background: rgba(250, 250, 250, 0.8);
+    background: rgb(250 250 250 / 80%);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgb(0 0 0 / 5%);
 }
 
 .main-header.header-scrolled .header-container {
     padding: 0.8rem 2rem;
-}
-
-.main-header.header-scrolled .brand-logo {
-    max-height: 50px;
-}
-
-.logo-link {
-    display: inline-block;
-    transition: var(--transition);
 }
 
 .brand-logo {
@@ -844,6 +836,15 @@ footer {
     width: auto;
     border-radius: 8px;
     transition: all 0.4s ease;
+}
+
+.logo-link {
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.main-header.header-scrolled .brand-logo {
+    max-height: 50px;
 }
 
 .main-nav {
@@ -905,16 +906,18 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (width <= 992px) {
     .about-content {
         flex-direction: column;
         text-align: center;
         padding: 3rem 2rem;
     }
+
     .about-image {
         flex: 0 0 250px;
         margin-bottom: 1rem;
     }
+
     .about-text h2 {
         text-align: center;
     }
@@ -922,15 +925,19 @@ footer {
     .brand-logo {
         max-height: 70px;
     }
+
     .header-container {
         padding: 1.5rem;
     }
+
     .hero-content {
         gap: 2rem;
     }
+
     .hero-text h1 {
         font-size: 3rem;
     }
+
     .gallery-container {
         columns: 2 300px; /* Reduce to 2 columns max on tablet */
     }
@@ -945,7 +952,7 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .header-container {
         padding: 1rem 1.5rem;
     }
@@ -958,9 +965,11 @@ footer {
     .mobile-menu-toggle.active .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
+
     .mobile-menu-toggle.active .bar:nth-child(2) {
         opacity: 0;
     }
+
     .mobile-menu-toggle.active .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
@@ -977,7 +986,7 @@ footer {
         justify-content: center;
         align-items: center;
         padding: 4rem 2rem;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        box-shadow: -10px 0 30px rgb(0 0 0 / 10%);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 2rem;
     }
@@ -1078,7 +1087,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 10px 20px rgb(108 92 231 / 30%);
     z-index: 1500;
     opacity: 0;
     visibility: hidden;
@@ -1096,5 +1105,5 @@ footer {
 .back-to-top:hover {
     background: var(--color-dark);
     transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px rgb(0 0 0 / 20%);
 }
