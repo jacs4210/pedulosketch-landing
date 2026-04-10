@@ -1,6 +1,5 @@
 .DS_Store
 recursos_temporales/
-node_modules/
 .netlify/
 Thumbs.db
 plan_landing.md
