@@ -3,6 +3,7 @@
 ¡Bienvenido a PeludoSketch! Este es el repositorio principal de la *Landing Page* oficial de la marca: un sitio web portafolio, limpio, y con una estética en colores pastel diseñado para convertir visitantes en clientes al mostrar amor, calidad artística y transparencia en el proceso creativo.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2dbedee0-379a-462d-9a27-bc7ce85383b9/deploy-status)](https://app.netlify.com/projects/peludosketch/deploys)
+[![CI/CD Pipeline](https://github.com/jacs4210/pedulosketch-landing/actions/workflows/main.yml/badge.svg)](https://github.com/jacs4210/pedulosketch-landing/actions/workflows/main.yml)
 
 ## 🐶 Acerca del Proyecto
 PeludoSketch transforma a los "peluditos" de compañía en recuerdos especiales ilustrados a mano. Esta página web está enfocada en mostrar un escaparate nativo que consolida la biografía de Aleja (la autora), un amplio portafolio, una tabla de tarifas, e interacciones premium de interfaz diseñadas en un embudo de conversión para llevarte a apartar comisiones a través de los mensajes privados de Instagram.
@@ -15,14 +16,33 @@ PeludoSketch transforma a los "peluditos" de compañía en recuerdos especiales 
 - **Performance Web Optimizada:** Integración de videografía fluida y comprimida de manera nativa sin el peso abusivo que exigiría la codificación convencional en formato *.gif*.
 
 ## 🛠️ Tecnologías Empleadas
-- **HTML5 Semántico:** Estructura de documentos estandarizados para que Google lo indexe e interprete perfectamente por lectores de pantalla.
-- **Vanilla CSS3:** Prescindiendo del bloque pesado de librerías o frameworks (Tailwind, Bootstrap), empleando Flexbox, Variables de diseño unificadas (`:root`), Media Queries y lógicas para UI moderna.
-- **Vanilla JavaScript (ES6+):** Utilizado de manera estratégica y liviana para interceptar el Viewport (a través de `IntersectionObserver`), interactuar con modales que sobrepasan flujos HTML y controlar *smooth-scrolling* algorítmico.
+- **Core:** HTML5 Semántico, Vanilla CSS3 (Flexbox, Variables CSS) y JavaScript ES6+.
+- **Interacción:** `IntersectionObserver API` para efectos de scroll suave y revelación.
+- **Calidad de Código (Linting):** 
+  - `htmlhint` para validación de estructura HTML.
+  - `stylelint` para consistencia en estilos CSS.
+  - `eslint` para buenas prácticas y errores en JavaScript.
+- **Seguridad:** `Gitleaks` para la detección proactiva de secretos expuestos en el historial de Git.
 
-## 🚀 Despliegue (Local)
-1. Clona este repositorio o descarga su ZIP.
-2. No necesitas de contenedores ni runtimes ya que el sitio expone Vanilla Web Standards. Simplemente abre el archivo `index.html` en tu navegador web de confianza, o si deseas servirlos localmente (Recomendado), usa herramientas de host local como _Live Server_ en tu computadora.
-3. El sitio web está listo para ser empaquetado en cualquier entorno estático de CDN serverless de Nivel Mundial (por ej. Vercel Drop, Netlify, o *Deploy to GitHub Pages*).
+## 🚀 Pipeline de CI/CD
+El proyecto cuenta con un flujo de **Integración y Entrega Continua** a través de **GitHub Actions**:
+
+1.  **Lint & Quality:** Cada cambio es validado automáticamente para asegurar que el código cumple con los estándares de calidad.
+2.  **Security Scan:** Se realiza un escaneo de seguridad en cada commit para proteger la integridad del repositorio.
+3.  **Automated Deploy:** El sitio se despliega automáticamente en **Netlify** solo si todas las pruebas de calidad y seguridad han sido superadas con éxito.
+
+> [!IMPORTANT]
+> Para configurar el pipeline en un nuevo entorno, consulta la [Guía de Configuración CI/CD](CICD_GUIDE.md).
+
+## 💻 Desarrollo Local
+1. Clona este repositorio: `git clone https://github.com/jacs4210/pedulosketch-landing.git`
+2. Abre `index.html` en tu navegador o usa una extensión como **Live Server**.
+3. (Opcional) Para ejecutar las validaciones locales de código:
+   ```bash
+   npx htmlhint "**/*.html"
+   npx stylelint "css/**/*.css"
+   npx eslint "js/**/*.js"
+   ```
 
 ---
 Hecho con 🩵 para quienes aman a sus peluditos.

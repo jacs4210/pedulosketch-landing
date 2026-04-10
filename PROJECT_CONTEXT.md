@@ -1,7 +1,7 @@
 # PROJECT_CONTEXT.md
 
 > Archivo generado automáticamente por el agente de Antigravity.
-> Última actualización: 2026-04-09T16:30:11-05:00
+> Última actualización: 2026-04-10T23:07:30-05:00
 > No editar manualmente — regenerar con la skill `.agents/update-project-context.md`
 
 ---
@@ -30,11 +30,12 @@
 - **N/A**: Proyecto estático sin persistencia en servidor propio.
 
 ### Herramientas de build y desarrollo
+- **GitHub Actions**: Motor de CI/CD para automatización de tareas.
 - **Live Server**: Recomendado para previsualización local.
-- **Netlify**: Plataforma de hosting y CI/CD.
+- **Netlify CLI**: Utilizado en el pipeline para despliegue programático.
 
 ### Testing
-- **N/A**: No se encontraron frameworks de testing configurados.
+- **Especializado**: No se encontraron frameworks de unit testing tradicionales, pero se aplican validaciones estáticas de calidad.
 
 ---
 
@@ -45,6 +46,7 @@
 **Estructura de carpetas relevante:**
 ```
 .
+├── .github/          # Workflows de GitHub Actions
 ├── .agents/          # Configuraciones del Agente IA (reglas, skills, workflows)
 ├── assets/           # Recursos estáticos (brand, gallery)
 ├── css/              # Estilos (styles.css)
@@ -56,6 +58,7 @@
 **Patrones arquitectónicos identificados:**
 - **Static Assets Orchestration**: Separación limpia entre estructura, diseño y comportamiento.
 - **Event-Driven UI**: Uso de listeners en el DOM para manejar la lógica de modales, galería y cálculos de precios.
+- **Automated Quality Pipeline**: Integración de linters en el flujo de entrega para asegurar consistencia.
 
 ---
 
@@ -68,9 +71,10 @@
 - **Microanimaciones**: Efectos de scroll reveal y hover premium para mejorar el UX.
 
 **Últimos cambios detectados:**
-- **Infraestructura de Agentes**: Creación de skills, rules y workflows para la auditoría y mantenimiento mediante IA.
-- **Rediseño Comercial**: Actualización de la sección de planes, precios y pasos del proceso de compra.
-- **Correcciones UI**: Ajustes de colores y errores visuales en los contenedores de la galería.
+- **Pipeline CI/CD Robusto**: Implementación de GitHub Actions para validación automática de código y despliegue.
+- **Validación Estática de Código**: Configuración de ESLint, Stylelint y HTMLHint.
+- **Secret Scanning**: Integración de Gitleaks para seguridad del repositorio.
+- **Documentación de DevOps**: Creación de `CHANGELOG.md` y `CICD_GUIDE.md`.
 
 ---
 
@@ -78,25 +82,28 @@
 
 | Servicio | Propósito | Cómo se integra |
 |----------|-----------|-----------------|
-| Netlify | Hosting y despliegue | Configurado vía `netlify.toml` y git hooks |
+| Netlify | Hosting y despliegue | Configurado vía `netlify.toml` y GitHub Actions |
+| GitHub | Gestión de código y automatización | GitHub Actions |
 | Instagram | Canal de ventas y atención | Enlaces directos a DMs (`ig.me/m/peludosketch`) |
 
 ---
 
 ## CI/CD y despliegue
 
-**Herramienta CI/CD:** Netlify (vía Git Integration)
-**Archivo de configuración:** [netlify.toml](https://github.com/jacs4210/pedulosketch-landing/blob/main/netlify.toml)
+**Herramienta CI/CD:** GitHub Actions
+**Archivo de configuración:** [.github/workflows/main.yml](https://github.com/jacs4210/pedulosketch-landing/.github/workflows/main.yml)
 
 **Stages del pipeline:**
-1. **Build**: N/A (Despliegue directo de archivos estáticos).
-2. **Deploy**: Sincronización automática con la rama `main`.
+1. **Lint & Quality**: Validación de HTML, CSS y JS con herramientas dedicadas.
+2. **Security Scan**: Escaneo de secretos en el historial de Git con Gitleaks.
+3. **Deploy**: Despliegue automático a producción en Netlify tras pasar validaciones.
 
 **Triggers:**
 - Push a la rama `main`.
+- Pull Requests hacia `main`.
 
 **Entornos:**
-- **Production**: Gestionado automáticamente por Netlify.
+- **Production**: Gestionado por Netlify vía GitHub Actions.
 
 **Plataforma de despliegue:** Netlify
 
@@ -106,17 +113,24 @@
 
 **Requisitos previos:**
 - Navegador moderno.
-- Extensión "Live Server" (o similar) recomendada.
+- Node.js (opcional, para ejecutar linters vía `npx`).
 
 **Comandos principales:**
 ```bash
-# El proyecto no usa npm/yarn.
-# Se sirve directamente como archivos estáticos.
+# Validar HTML
+npx htmlhint "**/*.html"
+
+# Validar CSS
+npx stylelint "css/**/*.css"
+
+# Validar JS
+npx eslint "js/**/*.js"
 ```
 
-**Variables de entorno requeridas** (sin valores):
+**Variables de entorno requeridas** (en GitHub Secrets):
 ```
-N/A
+NETLIFY_AUTH_TOKEN=
+NETLIFY_SITE_ID=
 ```
 
 ---
@@ -125,8 +139,7 @@ N/A
 
 - **Nombrado de archivos:** kebab-case para activos y estilos (ej: `styles.css`, `logo.webp`).
 - **Nombrado de componentes:** Clases CSS descriptivas en kebab-case.
-- **Linter:** No configurado en el código base — [INFERIDO].
-- **Formatter:** No configurado en el código base — [INFERIDO].
+- **Linter:** ESLint (`.eslintrc.json`), Stylelint (`.stylelintrc.json`), HTMLHint (`.htmlhintrc`).
 - **Commits:** Patrón "Type: Description" (ej: `Feat: Rediseño...`, `Fix: Error...`).
 
 ---
@@ -134,11 +147,11 @@ N/A
 ## Restricciones técnicas conocidas
 
 - **Static Only**: No cuenta con backend dinámico; toda la lógica es client-side.
-- **No NPM Workflow**: No hay gestión de dependencias vía package managers, lo que dificulta la integración de utilidades modernas de bundling sin una refactorización previa.
+- **No NPM Workflow**: No hay gestión de dependencias vía package managers localmente, se utilizan vía `npx` en el pipeline.
 
 ---
 
 ## Notas del agente
 
-- El archivo fue creado por primera vez al no existir en el repositorio.
-- La sección de `Variables de entorno` se marcó como `N/A` al ser un proyecto 100% estático frontend sin integraciones que consuman secrets (la integración con IG es vía URL pública).
+- Se ha profesionalizado el flujo de entrega sustituyendo (o complementando) la integración nativa de Netlify por un pipeline más seguro y controlado en GitHub Actions.
+- El archivo `CHANGELOG.md` ha sido inicializado para mantener la trazabilidad de los cambios según el estándar "Keep a Changelog".
