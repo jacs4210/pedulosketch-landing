@@ -31,7 +31,7 @@ jobs:
           npx stylelint "css/**/*.css" --config .stylelintrc.json
 
       - name: Validate JS
-        run: npx eslint "js/**/*.js" --config .eslintrc.json
+        run: export ESLINT_USE_FLAT_CONFIG=false && npx eslint@8 "js/**/*.js" --config .eslintrc.json
 
   security:
     name: Security Scan
