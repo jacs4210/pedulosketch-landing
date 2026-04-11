@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import globals from "globals";
 
 export default [
     js.configs.recommended,
@@ -7,18 +8,7 @@ export default [
             ecmaVersion: 2022,
             sourceType: "script",
             globals: {
-                // Manual browser globals as we don't have 'globals' package installed locally
-                window: "readonly",
-                document: "readonly",
-                navigator: "readonly",
-                console: "readonly",
-                setTimeout: "readonly",
-                setInterval: "readonly",
-                requestAnimationFrame: "readonly",
-                IntersectionObserver: "readonly",
-                fetch: "readonly",
-                localStorage: "readonly",
-                location: "readonly"
+                ...globals.browser
             }
         },
         rules: {

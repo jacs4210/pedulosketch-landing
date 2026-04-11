@@ -7,13 +7,18 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ## [Unreleased]
 
-### Added
-- **Pipeline de CI/CD con GitHub Actions**: Automatización completa del flujo de validación, seguridad y despliegue.
-- **Validación de Código (Linting)**: Integración de `htmlhint`, `stylelint` y `eslint` para asegurar la calidad de HTML, CSS y JS sin dependencias locales pesadas.
-- **Seguridad (Secret Scanning)**: Implementación de Gitleaks en el pipeline para detectar posibles credenciales expuestas en el historial de commits.
-- **Despliegue Automatizado**: Configuración de entrega continua hacia **Netlify** vinculada al éxito de las pruebas de calidad.
-- **Documentación Técnica de DevOps**: Creación de `CICD_GUIDE.md` y actualización del `README.md` para reflejar el nuevo stack de automatización.
-- **Mantenimiento de Contexto**: Actualización de `PROJECT_CONTEXT.md` para mantener la sincronización entre el codebase y el agente.
+### Changed
+- **Modernización de ESLint**: Migración de `.eslintrc.json` (Legacy) a `eslint.config.mjs` (Flat Config) para soporte nativo en entornos ESM y Node.js 24.
+- **Actualización de Entorno de CI/CD**: Migración de Node.js 20 a Node.js 24 en GitHub Actions para cumplir con las políticas de soporte de GitHub.
+- **Optimización de Despliegue**: Corrección de parámetros de la API de Netlify y reestructuración de permisos (`write-access`) en el pipeline para habilitar comentarios y estados de commit automatizados.
+
+### Fixed
+- **Validación de Calidad (Linting)**: Resolución de 237 errores de JS, 81 de CSS y errores de validación de HTML detected por el pipeline.
+- **Especificidad CSS**: Reordenamiento de selectores de imágenes y logos para eliminar advertencias de `no-descending-specificity`.
+- **Placeholder HTML**: Corrección de atributo `src` vacío en el lightbox para cumplimiento de estándares semánticos.
+
+### Security
+- **Ajuste de Permisos de GitHub Actions**: Implementación de permisos granulares (`contents: write`, `deployments: write`) para mejorar la seguridad y funcionalidad de las integraciones de terceros.
 
 ## [1.1.0] - 2026-04-09
 

@@ -27,17 +27,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
+          cache: 'npm'
 
-      - name: Validate HTML
-        run: npx htmlhint "**/*.html" --config .htmlhintrc
+      - name: Install Dependencies
+        run: npm install
 
-      - name: Validate CSS
-        run: |
-          npm install stylelint stylelint-config-standard
-          npx stylelint "css/**/*.css" --config .stylelintrc.json
-
-      - name: Validate JS
-        run: npx eslint "js/**/*.js"
+      - name: Run Quality Checks
+        run: npm run lint
 
   security:
     name: Security Scan

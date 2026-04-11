@@ -1,7 +1,7 @@
 # PROJECT_CONTEXT.md
 
 > Archivo generado automáticamente por el agente de Antigravity.
-> Última actualización: 2026-04-10T23:07:30-05:00
+> Última actualización: 2026-04-10T19:15:00-05:00
 > No editar manualmente — regenerar con la skill `.agents/update-project-context.md`
 
 ---
@@ -20,7 +20,7 @@
 ### Lenguajes
 - **HTML5**: Estándar semántico para la estructura.
 - **CSS3**: Estilos modernos con Flexbox y Variables CSS.
-- **JavaScript**: ES6+ Vanilla para interactividad.
+- **JavaScript**: ES2022 Vanilla (Client-side logic).
 
 ### Frameworks y librerías principales
 - **Vanilla JS**: Sin frameworks externos.
@@ -30,12 +30,14 @@
 - **N/A**: Proyecto estático sin persistencia en servidor propio.
 
 ### Herramientas de build y desarrollo
+- **Node.js 24**: Entorno de ejecución para linters en el pipeline de CI/CD.
+- **ESLint 9+**: Linter de JS utilizando el nuevo sistema **Flat Config**.
 - **GitHub Actions**: Motor de CI/CD para automatización de tareas.
 - **Live Server**: Recomendado para previsualización local.
 - **Netlify CLI**: Utilizado en el pipeline para despliegue programático.
 
 ### Testing
-- **Especializado**: No se encontraron frameworks de unit testing tradicionales, pero se aplican validaciones estáticas de calidad.
+- **Validación Estática**: Se aplican validaciones de calidad con HTMLHint, Stylelint y ESLint.
 
 ---
 
@@ -71,10 +73,10 @@
 - **Microanimaciones**: Efectos de scroll reveal y hover premium para mejorar el UX.
 
 **Últimos cambios detectados:**
-- **Pipeline CI/CD Robusto**: Implementación de GitHub Actions para validación automática de código y despliegue.
-- **Validación Estática de Código**: Configuración de ESLint, Stylelint y HTMLHint.
-- **Secret Scanning**: Integración de Gitleaks para seguridad del repositorio.
-- **Documentación de DevOps**: Creación de `CHANGELOG.md` y `CICD_GUIDE.md`.
+- **Modernización de ESLint**: Migración a ESLint 9/10 con `eslint.config.mjs` (Flat Config).
+- **Actualización de Entorno**: Migración del pipeline a Node.js 24.
+- **Optimización de Despliegue**: Ajuste de permisos en GitHub Actions para habilitar comentarios y estados automáticos en Netlify.
+- **Mejora de Calidad**: Resolución masiva de errores de linting en HTML, CSS y JS.
 
 ---
 
@@ -94,9 +96,9 @@
 **Archivo de configuración:** [.github/workflows/main.yml](https://github.com/jacs4210/pedulosketch-landing/.github/workflows/main.yml)
 
 **Stages del pipeline:**
-1. **Lint & Quality**: Validación de HTML, CSS y JS con herramientas dedicadas.
-2. **Security Scan**: Escaneo de secretos en el historial de Git con Gitleaks.
-3. **Deploy**: Despliegue automático a producción en Netlify tras pasar validaciones.
+1. **Lint & Quality**: Validación de HTML, CSS y JS.
+2. **Security Scan**: Escaneo de secretos con Gitleaks.
+3. **Deploy**: Entrega continua a Netlify (Producción).
 
 **Triggers:**
 - Push a la rama `main`.
@@ -105,25 +107,23 @@
 **Entornos:**
 - **Production**: Gestionado por Netlify vía GitHub Actions.
 
-**Plataforma de despliegue:** Netlify
-
 ---
 
 ## Entorno de desarrollo local
 
 **Requisitos previos:**
 - Navegador moderno.
-- Node.js (opcional, para ejecutar linters vía `npx`).
+- Node.js 24+ (para ejecutar linters vía `npx`).
 
 **Comandos principales:**
 ```bash
 # Validar HTML
-npx htmlhint "**/*.html"
+npx htmlhint "**/*.html" --config .htmlhintrc
 
 # Validar CSS
-npx stylelint "css/**/*.css"
+npx stylelint "css/**/*.css" --config .stylelintrc.json
 
-# Validar JS
+# Validar JS (Modern Flat Config)
 npx eslint "js/**/*.js"
 ```
 
@@ -137,21 +137,22 @@ NETLIFY_SITE_ID=
 
 ## Convenciones y estándares
 
-- **Nombrado de archivos:** kebab-case para activos y estilos (ej: `styles.css`, `logo.webp`).
+- **Nombrado de archivos:** kebab-case para activos y estilos.
 - **Nombrado de componentes:** Clases CSS descriptivas en kebab-case.
-- **Linter:** ESLint (`.eslintrc.json`), Stylelint (`.stylelintrc.json`), HTMLHint (`.htmlhintrc`).
-- **Commits:** Patrón "Type: Description" (ej: `Feat: Rediseño...`, `Fix: Error...`).
+- **Linter:** ESLint (`eslint.config.mjs`), Stylelint (`.stylelintrc.json`), HTMLHint (`.htmlhintrc`).
+- **Commits:** Patrón "Type: Description".
 
 ---
 
 ## Restricciones técnicas conocidas
 
-- **Static Only**: No cuenta con backend dinámico; toda la lógica es client-side.
-- **No NPM Workflow**: No hay gestión de dependencias vía package managers localmente, se utilizan vía `npx` en el pipeline.
+- **Static Only**: No cuenta con backend dinámico.
+- **No NPM Workflow**: No hay `package.json` en la raíz; se usan herramientas standalone vía `npx`.
 
 ---
 
 ## Notas del agente
 
-- Se ha profesionalizado el flujo de entrega sustituyendo (o complementando) la integración nativa de Netlify por un pipeline más seguro y controlado en GitHub Actions.
-- El archivo `CHANGELOG.md` ha sido inicializado para mantener la trazabilidad de los cambios según el estándar "Keep a Changelog".
+- Se ha actualizado el pipeline para ser compatible con Node.js 24, adelantándose a la depreciación de Node 20 en GitHub Actions.
+- La migración a ESLint Flat Config asegura que el proyecto pueda seguir validando su calidad de código independientemente de las actualizaciones de dependencias globales.
+- Se han habilitado permisos de escritura para el `GITHUB_TOKEN` en el workflow para permitir que las integraciones de Netlify operen correctamente.

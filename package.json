@@ -1,0 +1,21 @@
+{
+  "name": "peludosketch-landing",
+  "version": "1.1.1",
+  "description": "Landing page para PeludoSketch con validación de calidad moderna.",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "lint:html": "htmlhint '**/*.html' --config .htmlhintrc",
+    "lint:css": "stylelint 'css/**/*.css' --config .stylelintrc.json",
+    "lint:js": "eslint 'js/**/*.js'",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.2.0",
+    "eslint": "^10.2.0",
+    "globals": "^16.0.0",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^16.15.0",
+    "stylelint-config-standard": "^37.0.0"
+  }
+}
