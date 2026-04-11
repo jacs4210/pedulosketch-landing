@@ -9,6 +9,12 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+permissions:
+  contents: write
+  deployments: write
+  statuses: write
+  pull-requests: write
+
 jobs:
   lint:
     name: Lint & Quality
@@ -31,7 +37,7 @@ jobs:
           npx stylelint "css/**/*.css" --config .stylelintrc.json
 
       - name: Validate JS
-        run: export ESLINT_USE_FLAT_CONFIG=false && npx eslint@8 "js/**/*.js" --config .eslintrc.json
+        run: npx eslint "js/**/*.js"
 
   security:
     name: Security Scan
@@ -65,7 +71,7 @@ jobs:
           deploy-message: "Deploy from GitHub Actions - ${{ github.sha }}"
           enable-pull-request-comment: false
           enable-commit-comment: true
-          overwritable-pull-request-comment: false
+          overwrites-pull-request-comment: false
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
